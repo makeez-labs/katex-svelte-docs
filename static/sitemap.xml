@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://katex-svelte.pages.dev/</loc><priority>1.0</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/install</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/quickstart</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/styles</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/chem-equation</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/chem-block</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/chem-auto</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/chem-notation</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/latex-math</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/latex-block</loc><priority>0.8</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/render-chem</loc><priority>0.6</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/render-auto</loc><priority>0.6</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/build-reaction</loc><priority>0.6</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/search</loc><priority>0.6</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/docs/elements</loc><priority>0.6</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/chemistry/equations</loc><priority>0.7</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/chemistry/reactions</loc><priority>0.7</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/chemistry/ionic</loc><priority>0.7</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/chemistry/lesson</loc><priority>0.7</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/math/expressions</loc><priority>0.7</priority></url>
+  <url><loc>https://katex-svelte.pages.dev/examples/math/mixed</loc><priority>0.7</priority></url>
+</urlset>

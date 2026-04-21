@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://katex-svelte-docs.vercel.app/sitemap.xml

@@ -1,0 +1,16 @@
+{
+  "name": "katex-svelte documentation",
+  "short_name": "katex-svelte",
+  "description": "Svelte 5 components for rendering LaTeX math and chemistry notation with KaTeX.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0891b4",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

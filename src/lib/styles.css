@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Brand — teal-green chemistry feel */
+  --brand:        #0d9488;
+  --brand-dark:   #0f766e;
+  --brand-light:  #f0fdfa;
+  --brand-border: #99f6e4;
+
+  /* Accent for reactions/warnings */
+  --amber:        #d97706;
+  --amber-light:  #fffbeb;
+  --red:          #dc2626;
+  --red-light:    #fef2f2;
+  --blue:         #2563eb;
+  --blue-light:   #eff6ff;
+
+  /* Light mode neutrals */
+  --dark:    #0f172a;
+  --mid:     #475569;
+  --muted:   #94a3b8;
+  --border:  #e2e8f0;
+  --surface: #f8fafc;
+  --white:   #ffffff;
+
+  /* Code */
+  --code-bg:      #0f172a;
+  --code-border: #1e293b;
+
+  /* Layout */
+  --sidebar-w: 264px;
+  --radius:    8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+[data-theme="dark"] {
+  --brand:        #14b8a6;
+  --brand-dark:  #0d9488;
+  --brand-light: #134e4a;
+  --brand-border: #115e59;
+
+  --amber:        #f59e0b;
+  --amber-light: #451a03;
+  --red:          #f87171;
+  --red-light:    #450a0a;
+  --blue:         #60a5fa;
+  --blue-light:    #1e3a5f;
+
+  --dark:    #f1f5f9;
+  --mid:     #cbd5e1;
+  --muted:   #64748b;
+  --border: #334155;
+  --surface: #1e293b;
+  --white:   #0f172a;
+
+  --code-bg:      #020617;
+  --code-border: #1e293b;
+}
+
+html {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color:       var(--dark);
+  background:  var(--white);
+  scroll-behavior: smooth;
+}
+
+body { line-height: 1.65; font-size: 15px; }
+
+.font-display { font-family: 'Sora', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  font-family:    'Sora', sans-serif;
+  line-height:    1.2;
+  letter-spacing: -0.02em;
+  color:          var(--dark);
+}
+
+p { color: var(--mid); line-height: 1.7; margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+
+ul, ol { color: var(--mid); padding-left: 20px; margin-bottom: 14px; }
+li { margin-bottom: 6px; line-height: 1.6; }
+
+code {
+  font-family:  'JetBrains Mono', monospace;
+  font-size:    0.83em;
+  background:   var(--surface);
+  border:       1px solid var(--border);
+  border-radius: 4px;
+  padding:      2px 6px;
+  color:        var(--brand-dark);
+}
+
+pre {
+  background:    var(--code-bg);
+  border-radius: var(--radius-lg);
+  padding:       20px 24px;
+  overflow-x:    auto;
+  font-family:   'JetBrains Mono', monospace;
+  font-size:     13px;
+  line-height:  1.7;
+  color:         #e2e8f0;
+  border:        1px solid var(--code-border);
+  margin:        16px 0;
+}
+
+pre code {
+  background:    transparent;
+  border:        none;
+  padding:       0;
+  color:         inherit;
+  font-size:     inherit;
+}
+
+/* KaTeX display in docs */
+[data-theme="dark"] :global(.katex) {
+  color: var(--dark) !important;
+}
+
+:global(.katex-display) {
+  margin:   1.2em 0 !important;
+  overflow-x: auto;
+}
+
+:global(.katex) { font-size: 1.05em; }
+
+::-webkit-scrollbar {
+  width:  8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --scrollbar-thumb: #334155;
+  }
+}
