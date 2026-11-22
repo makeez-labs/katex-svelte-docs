@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme } from '$lib/theme';
+  import { theme } from '#lib/theme';
 
   let currentTheme = $derived($theme);
 </script>

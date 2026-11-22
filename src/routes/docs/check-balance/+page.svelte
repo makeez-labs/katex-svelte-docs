@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 
   const checkSig = `function checkBalance(equation: string): {
   balanced: boolean
@@ -32,7 +32,14 @@ console.log(r2.right)    // { H: 4, O: 2 }
 
 // Equilibrium reaction
 const r3 = checkBalance('N2 + 3H2 <=> 2NH3')
-console.log(r3.balanced) // true`
+console.log(r3.balanced) // true
+
+// Resonance arrows and condition brackets are supported
+const r4 = checkBalance('H2 <-> H2')
+console.log(r4.balanced) // true
+
+const r5 = checkBalance('CaCO3 ->[\\Delta] CaO + CO2')
+console.log(r5.balanced) // true — the condition is ignored when counting atoms`
 
   const balanceUsage = `import { balanceEquation, ChemBlock } from 'katex-svelte'
 
@@ -53,6 +60,13 @@ balanceEquation('C3H8 + O2 -> CO2 + H2O')
 
 balanceEquation('Al + HCl -> AlCl3 + H2')
 // → { equation: '2Al + 6HCl -> 2AlCl3 + 3H2', coefficients: [2, 6, 2, 3] }
+
+// The original arrow (including condition brackets) is preserved in the output
+balanceEquation('SO2 + O2 <=> SO3')
+// → { equation: '2SO2 + O2 <=> 2SO3', ... }
+
+balanceEquation('CaCO3 ->[\\Delta] CaO + CO2')
+// → { equation: 'CaCO3 ->[\\Delta] CaO + CO2', coefficients: [1, 1, 1] }
 
 // Invalid equation returns null
 balanceEquation('invalid')

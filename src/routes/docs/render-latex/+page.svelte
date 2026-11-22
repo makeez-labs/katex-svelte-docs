@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 
   const sig = `function renderLatex(latex: string, options?: RenderOptions): RenderResult
 function renderLatexBlock(latex: string, options?: RenderOptions): RenderResult
@@ -15,7 +15,8 @@ interface RenderOptions {
   errorMode?:        'text' | 'throw' | 'none'
   trust?:            boolean
   minRuleThickness?: number
-  maxSize?:          number
+  maxSize?:          number   // default: 10 (safety cap; KaTeX itself allows unlimited)
+  color?:            string   // any valid CSS colour — wraps output in a coloured span
 }`
 
   const usage = `import { renderLatex, renderLatexBlock } from 'katex-svelte'
@@ -35,7 +36,11 @@ const withColor = renderLatex('E = mc^2', {
   trust: false,
   errorMode: 'throw',
   maxSize: 8,
-})`
+})
+
+// Colour the output
+const red = renderLatex('E = mc^2', { color: '#dc2626' })
+// → <span style="color:#dc2626">…katex html…</span>`
 
   const examples = `import { renderLatex } from 'katex-svelte'
 

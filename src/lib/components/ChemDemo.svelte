@@ -24,7 +24,7 @@
 <div class="demo">
   <div class="demo-label">
     {#if label}<span class="label-text">{label}</span>{/if}
-    <span class="ce-src"><code>\ce{"{formula}"}</code></span>
+    <span class="ce-src"><code>{'\\ce{' + formula + '}'}</code></span>
   </div>
   <div class="demo-preview {block ? 'block-mode' : ''}">
     {#if block}

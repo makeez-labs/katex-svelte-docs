@@ -1,12 +1,12 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 
   const bun  = `bun add katex-svelte`
   const npm  = `npm install katex-svelte`
-  const peer = `{ "peerDependencies": { "svelte": "^5.0.0" } }`
+  const peer = `{ "peerDependencies": { "svelte": "^5.20.0" } }`
   const preload = `<!-- app.html — optional preload for faster first render -->
 <link rel="preload"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.46/dist/katex.min.css"
   as="style" />`
 </script>
 
@@ -30,7 +30,7 @@
 <\/script>`} lang="svelte" />
 
 <p>Or link it from the CDN in your <code>app.html</code>:</p>
-<CodeBlock code={`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />`} lang="html" />
+<CodeBlock code={`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.46/dist/katex.min.css" />`} lang="html" />
 
 <h2>Peer dependency</h2>
 <p>Svelte 5 is required. KaTeX is a direct dependency — it ships bundled.</p>

@@ -1,5 +1,7 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
+  import ExamplePreview from '#lib/components/ExamplePreview.svelte'
+  import { ChemEquation, ChemBlock, ChemAuto, ChemNotation, LatexMath, LatexBlock } from 'katex-svelte'
 
   const inline = `<script lang="ts">
   import { ChemEquation } from 'katex-svelte'
@@ -42,10 +44,17 @@
 <h2>1. Inline chemical formula</h2>
 <p>Use <code>ChemEquation</code> for formulas embedded in prose text.</p>
 <CodeBlock code={inline} lang="svelte" />
+<ExamplePreview>
+  <p>Water is <ChemEquation formula="H2O" />.</p>
+  <p>Combustion: <ChemEquation formula="CH4 + 2O2 -> CO2 + 2H2O" /></p>
+</ExamplePreview>
 
 <h2>2. Display block equation</h2>
 <p>Use <code>ChemBlock</code> for important reactions centred on their own line.</p>
 <CodeBlock code={block} lang="svelte" />
+<ExamplePreview label="Live preview — ChemBlock">
+  <ChemBlock formula="N2 + 3H2 <=> 2NH3" label="Haber process" number={1} />
+</ExamplePreview>
 
 <h2>3. Auto-render mixed prose</h2>
 <p>
@@ -54,14 +63,32 @@
   — all rendered automatically.
 </p>
 <CodeBlock code={auto} lang="svelte" />
+<ExamplePreview label="Live preview — ChemAuto">
+  <ChemAuto text={'The pH of water at 25°C is 7, since \\ce{H2O <=> H+ + OH^-} and $$pH = -\\log_{10}[\\ce{H+}]$$ gives exactly 7.'} />
+</ExamplePreview>
 
 <h2>4. Labelled notation card</h2>
 <p>Use <code>ChemNotation</code> for formatted reference cards in lessons.</p>
 <CodeBlock code={notation} lang="svelte" />
+<ExamplePreview label="Live preview — ChemNotation">
+  <ChemNotation
+    formula="Fe2O3 + 3CO -> 2Fe + 3CO2"
+    name="Reduction of iron(III) oxide"
+    desc="Used in the blast furnace extraction of iron"
+    type="reaction"
+  />
+</ExamplePreview>
 
 <h2>5. Math expressions</h2>
 <p>Use <code>LatexMath</code> and <code>LatexBlock</code> for rate equations, equilibrium expressions, and other math.</p>
 <CodeBlock code={math} lang="svelte" />
+<ExamplePreview label="Live preview — LatexMath & LatexBlock">
+  <p>The rate equation is <LatexMath formula={'\\text{rate} = k[A]^m[B]^n'} /></p>
+  <LatexBlock
+    formula={'K_{eq} = \\frac{[\\text{products}]}{[\\text{reactants}]}'}
+    label="Equilibrium constant expression"
+  />
+</ExamplePreview>
 
 <div class="next-bar">
   <a href="/docs/chem-equation" class="next-link">ChemEquation API →</a>

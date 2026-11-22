@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 
   const sig = `function renderChem(formula: string, options?: RenderOptions): RenderResult
 function renderChemBlock(formula: string, options?: RenderOptions): RenderResult
@@ -15,7 +15,8 @@ interface RenderOptions {
   errorMode?:        'text' | 'throw' | 'none'  // default: 'text'
   trust?:            boolean
   minRuleThickness?: number
-  maxSize?:          number
+  maxSize?:          number   // default: 10 (safety cap)
+  color?:            string   // any valid CSS colour — wraps output in a coloured span
 }`
 
   const usage = `import { renderChem, renderChemBlock, isValidChem } from 'katex-svelte'

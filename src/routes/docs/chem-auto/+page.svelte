@@ -1,6 +1,8 @@
 <script lang="ts">
-  import CodeBlock  from '$lib/components/CodeBlock.svelte'
-  import PropsTable from '$lib/components/PropsTable.svelte'
+  import CodeBlock  from '#lib/components/CodeBlock.svelte'
+  import PropsTable from '#lib/components/PropsTable.svelte'
+  import ExamplePreview from '#lib/components/ExamplePreview.svelte'
+  import { ChemAuto } from 'katex-svelte'
 
   const props = [
     { name: 'text',              type: 'string',  required: true,  desc: 'Text containing embedded \\ce{}, $...$, $$...$$ expressions' },
@@ -94,12 +96,24 @@
 
 <h2>Basic usage</h2>
 <CodeBlock code={basic} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <ChemAuto text={'Water (\\ce{H2O}) has a molar mass of $18\\text{ g/mol}$.'} />
+  <ChemAuto text={'The equilibrium constant is defined as $$K_{eq} = \\frac{[\\ce{NH3}]^2}{[\\ce{N2}][\\ce{H2}]^3}$$'} />
+  <ChemAuto text={'Combustion of methane: \\ce{CH4 + 2O2 -> CO2 + 2H2O}. The enthalpy change is $\\Delta H = -890\\text{ kJ/mol}$.'} />
+</ExamplePreview>
 
 <h2>Full lesson paragraph</h2>
 <CodeBlock code={lessonCode} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <ChemAuto text={'The Haber process produces ammonia (\\ce{NH3}) for fertilisers. The reaction is reversible: \\ce{N2 + 3H2 <=> 2NH3}. At equilibrium, the yield is described by: $$K_p = \\frac{p(\\ce{NH3})^2}{p(\\ce{N2}) \\cdot p(\\ce{H2})^3}$$ where \\(p\\) represents partial pressure.'} />
+</ExamplePreview>
 
 <h2>Options</h2>
 <CodeBlock code={disableChem} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <ChemAuto text={'The rate is $k = Ae^{-E_a/RT}$'} chemistry={false} />
+  <p>Inline: <ChemAuto text="\ce{H2O} melts at $0°C$" tag="span" /></p>
+</ExamplePreview>
 
 <div class="tip">
   <strong>Tip:</strong> Use <code>ChemAuto</code> for lesson body text, exam questions,

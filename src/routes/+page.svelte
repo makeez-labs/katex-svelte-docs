@@ -1,6 +1,7 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
-  import { CE_EXAMPLES } from '$lib/data/nav.js'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
+  import { ChemEquation } from 'katex-svelte'
+  import { CE_EXAMPLES } from '#lib/data/nav.js'
 
   const install = `bun add katex-svelte`
 
@@ -87,11 +88,12 @@
 <h2 class="section-h">mhchem quick reference</h2>
 <div class="ref-table">
   <table>
-    <thead><tr><th>\ce{"{}"} input</th><th>Description</th></tr></thead>
+    <thead><tr><th>\ce{"{}"} input</th><th>Renders as</th><th>Description</th></tr></thead>
     <tbody>
       {#each CE_EXAMPLES as ex}
         <tr>
-          <td><code>\ce{"{ex.input}"}</code></td>
+          <td><code>{'\\ce{' + ex.input + '}'}</code></td>
+          <td class="ref-render"><ChemEquation formula={ex.input} /></td>
           <td class="ref-desc">{ex.desc}</td>
         </tr>
       {/each}
@@ -170,6 +172,7 @@
   .ref-table tr:last-child td { border-bottom: none; }
   .ref-table tr:hover td { background: var(--surface); }
   .ref-desc { color: var(--mid); }
+  .ref-render { white-space: nowrap; font-size: 15px; }
 
   .next-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
   .next { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px 18px; text-decoration: none; display: flex; flex-direction: column; gap: 4px; transition: all .2s; }

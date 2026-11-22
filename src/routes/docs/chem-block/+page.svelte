@@ -1,6 +1,8 @@
 <script lang="ts">
-  import CodeBlock  from '$lib/components/CodeBlock.svelte'
-  import PropsTable from '$lib/components/PropsTable.svelte'
+  import CodeBlock  from '#lib/components/CodeBlock.svelte'
+  import PropsTable from '#lib/components/PropsTable.svelte'
+  import ExamplePreview from '#lib/components/ExamplePreview.svelte'
+  import { ChemBlock } from 'katex-svelte'
 
   const props = [
     { name: 'formula',  type: 'string', required: true, desc: 'Chemistry formula in mhchem notation' },
@@ -8,6 +10,7 @@
     { name: 'number',   type: 'string | number', desc: 'Optional equation number shown on the right' },
     { name: 'class',    type: 'string', default: "''", desc: 'Extra CSS classes' },
     { name: 'errorMode', type: "'text'|'none'|'throw'", default: "'text'", desc: 'Error handling mode' },
+    { name: 'color',     type: 'string', desc: 'Text colour override — any valid CSS colour' },
   ]
 
   const code = `<ChemBlock formula="CH4 + 2O2 -> CO2 + 2H2O" label="Combustion of methane" />
@@ -34,6 +37,11 @@
 <PropsTable {props} />
 <h2>Examples</h2>
 <CodeBlock {code} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <ChemBlock formula="CH4 + 2O2 -> CO2 + 2H2O" label="Combustion of methane" />
+  <ChemBlock formula="N2 + 3H2 <=> 2NH3" label="Haber process" number={1} />
+  <ChemBlock formula={'6CO2 + 6H2O ->[\\text{light}][\\text{chlorophyll}] C6H12O6 + 6O2'} label="Photosynthesis" number={2} />
+</ExamplePreview>
 <div class="next-bar"><a href="/docs/chem-auto" class="next-link">ChemAuto →</a></div>
 <style>
   h1 { font-size: 34px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 10px; }

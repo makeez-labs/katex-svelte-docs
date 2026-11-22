@@ -1,11 +1,11 @@
 <script lang="ts">
   import '../lib/styles.css'
   import 'katex/dist/katex.min.css'
-  import ThemeToggle from '$lib/components/ThemeToggle.svelte'
-  import { theme } from '$lib/theme'
-  import { navigation } from '$lib/data/nav.js'
+  import ThemeToggle from '#lib/components/ThemeToggle.svelte'
+  import { theme } from '#lib/theme'
+  import { navigation } from '#lib/data/nav.js'
   import { onMount } from 'svelte'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
 
   let { children }: { children: any } = $props()
   let menuOpen = $state(false)
@@ -42,7 +42,7 @@
             <a
               href={item.href}
               class="item"
-              class:active={$page.url.pathname === item.href}
+              class:active={page.url.pathname === item.href}
               onclick={() => menuOpen = false}
             >
               <span>{item.label}</span>

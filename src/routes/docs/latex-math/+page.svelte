@@ -1,12 +1,15 @@
 <script lang="ts">
-  import CodeBlock  from '$lib/components/CodeBlock.svelte'
-  import PropsTable from '$lib/components/PropsTable.svelte'
+  import CodeBlock  from '#lib/components/CodeBlock.svelte'
+  import PropsTable from '#lib/components/PropsTable.svelte'
+  import ExamplePreview from '#lib/components/ExamplePreview.svelte'
+  import { LatexMath, LatexBlock, ChemEquation } from 'katex-svelte'
 
   const props = [
     { name: 'formula',      type: 'string',  required: true, desc: 'LaTeX math expression' },
     { name: 'displayMode',  type: 'boolean', default: 'false', desc: 'Render in display (block) mode' },
     { name: 'class',        type: 'string',  default: "''", desc: 'Extra CSS classes' },
     { name: 'errorMode',    type: "'text'|'none'|'throw'", default: "'text'", desc: 'Error handling' },
+    { name: 'color',        type: 'string',  desc: 'Text colour override — any valid CSS colour' },
   ]
 
   const inlineCode = `<script lang="ts">
@@ -66,7 +69,7 @@
 <PropsTable {props} />
 
 <h2>LatexBlock props</h2>
-<p>Same as <code>LatexMath</code> plus:</p>
+<p>Same as <code>LatexMath</code> (except <code>displayMode</code> — LatexBlock is always display mode) plus:</p>
 <div class="extra-props">
   <div class="ep"><code>label</code> <span>string</span> — optional label below the equation</div>
   <div class="ep"><code>number</code> <span>string | number</span> — optional equation number on the right</div>
@@ -74,12 +77,34 @@
 
 <h2>Inline math</h2>
 <CodeBlock code={inlineCode} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <p>Rate equation: <LatexMath formula={'\\text{rate} = k[A]^m[B]^n'} /></p>
+  <p>pH definition: <LatexMath formula={'pH = -\\log_{10}[\\ce{H+}]'} /></p>
+  <p>Energy: <LatexMath formula="E = mc^2" /></p>
+  <p>Ideal gas: <LatexMath formula="PV = nRT" /></p>
+</ExamplePreview>
 
 <h2>Block math</h2>
 <CodeBlock code={blockCode} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <LatexBlock
+    formula={'K_{eq} = \\frac{[\\text{products}]}{[\\text{reactants}]}'}
+    label="Equilibrium constant expression"
+    number={1}
+  />
+  <LatexBlock formula="\Delta G = \Delta H - T\Delta S" label="Gibbs free energy" number={2} />
+  <LatexBlock formula={'\\text{rate} = k[A]^m[B]^n'} label="General rate equation" />
+</ExamplePreview>
 
 <h2>Mixing with ChemEquation</h2>
 <CodeBlock code={chemMath} lang="svelte" />
+<ExamplePreview label="Live preview">
+  <p>
+    The equilibrium constant for
+    <ChemEquation formula="N2 + 3H2 <=> 2NH3" /> is:
+  </p>
+  <LatexBlock formula={'K_c = \\frac{[\\ce{NH3}]^2}{[\\ce{N2}][\\ce{H2}]^3}'} />
+</ExamplePreview>
 
 <div class="next-bar">
   <a href="/docs/render-chem" class="next-link">renderChem utility →</a>

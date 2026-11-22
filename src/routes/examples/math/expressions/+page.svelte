@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 
   const expressionsCode = `<script lang="ts">
   import { LatexMath, LatexBlock } from 'katex-svelte'

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import CodeBlock  from '$lib/components/CodeBlock.svelte'
-  import PropsTable from '$lib/components/PropsTable.svelte'
-  import { CE_EXAMPLES } from '$lib/data/nav.js'
+  import CodeBlock  from '#lib/components/CodeBlock.svelte'
+  import PropsTable from '#lib/components/PropsTable.svelte'
+  import { ChemEquation } from 'katex-svelte'
 
   const props = [
     { name: 'formula',          type: 'string',  required: true, desc: 'Chemistry expression in mhchem \\ce{} notation (without the \\ce{} wrapper)' },
@@ -10,6 +10,7 @@
     { name: 'trust',            type: 'boolean', default: 'false', desc: 'Trust all KaTeX commands' },
     { name: 'minRuleThickness', type: 'number',  desc: 'Minimum line thickness in em' },
     { name: 'maxSize',          type: 'number',  default: '10', desc: 'Max size for \\Huge etc. in em' },
+    { name: 'color',            type: 'string',  desc: 'Text colour override — any valid CSS colour' },
   ]
 
   const examples = [
@@ -63,11 +64,12 @@
 <h2>mhchem notation reference</h2>
 <div class="ref-table">
   <table>
-    <thead><tr><th>formula prop</th><th>Description</th></tr></thead>
+    <thead><tr><th>formula prop</th><th>Renders as</th><th>Description</th></tr></thead>
     <tbody>
       {#each examples as ex}
         <tr>
           <td><code>{ex.formula}</code></td>
+          <td class="ref-render"><ChemEquation formula={ex.formula} /></td>
           <td class="desc">{ex.label}</td>
         </tr>
       {/each}
@@ -94,6 +96,7 @@
   .ref-table tr:last-child td { border-bottom: none; }
   .ref-table tr:hover td { background: var(--surface); }
   .desc { color: var(--mid); }
+  .ref-render { white-space: nowrap; font-size: 15px; }
   .next-bar { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
   .next-link { font-weight: 700; font-size: 15px; color: var(--brand); text-decoration: none; }
   .next-link:hover { text-decoration: underline; }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import CodeBlock from '$lib/components/CodeBlock.svelte'
+  import CodeBlock from '#lib/components/CodeBlock.svelte'
 </script>
 
 <svelte:head><title>KaTeX styles — katex-svelte</title></svelte:head>
@@ -9,11 +9,16 @@
 <h2>Option 1 — Import from the package</h2>
 <CodeBlock code={`import 'katex-svelte/styles'`} lang="typescript" title="src/routes/+layout.svelte script" />
 
+<p>
+  This ships the KaTeX stylesheet <em>and</em> its font files, so equations render
+  with the correct KaTeX fonts and no extra setup.
+</p>
+
 <h2>Option 2 — CDN link in app.html</h2>
-<CodeBlock code={`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />`} lang="html" />
+<CodeBlock code={`<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.46/dist/katex.min.css" />`} lang="html" />
 
 <h2>Option 3 — Preload for faster render</h2>
-<CodeBlock code={`<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />`} lang="html" />
+<CodeBlock code={`<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.16.46/dist/katex.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />`} lang="html" />
 
 <p>Without the stylesheet, equations will render as unstyled HTML — the math structure is correct but it will not look right.</p>
 
